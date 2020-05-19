@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon name="heart-half-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{recipes.level}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+  <ion-grid>
+    <ion-row> <!-- row 1 of 3-->
+      <ion-col size-sm="8" size-sm="2" size-md="6" offset-md="3" class="ion-text-center">
+        <ion-card>
+          <ion-card-header class="ion-no-padding">
+            <ion-img [src]="recipes.imageUrl"></ion-img>
+            <ion-title>{{recipes.title}}</ion-title>
+            <ion-card-subtitle>
+              <ion-label><h3> Preparation </h3>{{recipes.prepTime}} min.</ion-label>
+              <ion-label><h3> Baking </h3>{{recipes.bakingTime}} min.</ion-label>
+              <ion-label><h3> Resting </h3>{{recipes.restTime}} min.</ion-label>
+            </ion-card-subtitle>
+          </ion-card-header>
+         
+          <ion-card-content>
+            <div class="ion-no-margin" class="ingridients">
+             <h2>Ingridients</h2>
+             <p> {{recipes.ingridients[0]}}</p>
+             <p> {{recipes.ingridients[1]}}</p>
+             <p> {{recipes.ingridients[2]}}</p>
+             <p> {{recipes.ingridients[3]}}</p>
+             <p> {{recipes.ingridients[4]}}</p>
+             <p> {{recipes.ingridients[5]}}</p>
+             <p> {{recipes.ingridients[6]}}</p>
+             <p> {{recipes.ingridients[7]}}</p>
+             <p> {{recipes.ingridients[8]}}</p>
+            </div>
+            <div class="Utencils">
+              <h2>Utencils</h2>
+              <p>{{recipes.utencils}}</p>
+              <p> {{recipes.ingridients[0]}}</p>
+              <p> {{recipes.ingridients[1]}}</p>
+              <p> {{recipes.ingridients[2]}}</p>
+              <p> {{recipes.ingridients[3]}}</p>
+              <p> {{recipes.ingridients[4]}}</p>
+              <p> {{recipes.ingridients[5]}}</p>
+            </div>
+             <div class="Method">
+              <h2>Steps</h2>
+              <p>{{recipes.method[0]}}</p>
+              <p>{{recipes.method[1]}}</p>
+              <p>{{recipes.method[2]}}</p>
+              <p>{{recipes.method[3]}}</p>
+              <p>{{recipes.method[4]}}</p>
+              <p>{{recipes.method[5]}}</p>
+              <p>{{recipes.method[6]}}</p>
+              <p>{{recipes.method[7]}}</p>
+              <p>{{recipes.method[8]}}</p>
+            </div>
+          </ion-card-content>
+          <div>
+            <ion-button  expand="block" color="primary" (click)="onCheckRecipe()">
+              Take a picture and Share!
+            </ion-button>
+          </div>
+        </ion-card>      
+      </ion-col>
+    </ion-row>
+    <ion-row> <!-- row 2 of 3-->
+      <ion-col size-sm="8" size-sm="2" size-md="6" offset-md="3" class="ion-text-center" >
+        <ion-card>
+          <ion-card-header class="ion-no-padding">
+            <img class="image" src="https://img-truly-scrumptious.s3.amazonaws.com/girl.png">
+            <h3 class="saved">Did you like it?</h3>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="text">  now you can save this recipe in your chef profile </p>
+              <ion-button color="success" shape="round">
+              <ion-icon slot="icon-only" name="bookmark-outline"></ion-icon>
+              </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row> <!-- row 3 of 3-->
+      <ion-col size-sm="8" size-sm="2" size-md="6" offset-md="3" class="ion-text-center">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <h2>Reviews</h2>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item-sliding *ngFor= "let reviews of loadedReviews" #slidingEl>
+                <ion-item >
+                  <ion-thumbnail slot="start">
+                   <ion-img [src]="reviews.imageUrl"></ion-img>
+                  </ion-thumbnail>
+                  <ion-label>
+                    <p>{{reviews.description}}</p>
+                  </ion-label>
+                </ion-item>
+
+                <ion-item-options>
+                  <ion-item-option color="danger" (click)="onDelete( reviews.userId, slidingEl)">
+                    <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+                  </ion-item-option>
+                </ion-item-options>
+
+              </ion-item-sliding>
+            </ion-list>
+          </ion-card-content>
+        </ion-card> 
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

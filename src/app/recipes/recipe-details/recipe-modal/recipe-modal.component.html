@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{selectedRecipe.title}}
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onCancel()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center">
+  <form (ngSubmit)="onCreateReview()" #reviewForm="ngForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h3>
+            How did it go ?
+            Did you enjoy doing this recipe?
+            Leave a comment below and share your creation
+          </h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-img class="image" src="https://img-truly-scrumptious.s3.amazonaws.com/review.png"></ion-img>
+        </ion-col>
+      </ion-row>
+         <ion-row>
+          <ion-col>
+            <app-img-picker 
+            id="img"
+            name="img"
+            (imgPicker)="onImagePicked($event)">
+           </app-img-picker>
+          </ion-col>
+           <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Review</ion-label>
+            <ion-textarea 
+            rows="3" 
+            id="description" 
+            name="description" 
+            ngModel 
+            required
+            #reviewCtrl = 'ngModel'></ion-textarea>
+          </ion-item>
+          <ion-item 
+                *ngIf="!reviewCtrl.valid && reviewCtrl.touched"
+                lines="none">
+                  <p>
+                    You must write something.
+                  </p>
+                </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+        
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="tertiary" [disabled]="!reviewForm.valid"
+            [routerLink]="['/','home','tabs','home', selectedRecipe.id ]">
+            <ion-icon name="share-outline" slot="start"></ion-icon>
+            Share
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

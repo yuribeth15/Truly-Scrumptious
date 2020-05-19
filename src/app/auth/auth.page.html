@@ -1,0 +1,188 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ isLonginOpen ? 'Login' : 'Signin'}}</ion-title>
+  </ion-toolbar>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="f18d9e">
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid *ngIf=" isLonginOpen === true">
+    <ion-row>    <!-- welcome image before the sign up/ in form  -->
+      <ion-col >
+        <img src="https://img-truly-scrumptious.s3.amazonaws.com/2.png">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf=" isLonginOpen === false">
+    <ion-row>    <!-- sign up image before the sign up/ in form  -->
+      <ion-col >
+        <img src="https://img-truly-scrumptious.s3.amazonaws.com/1.png">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+    <ion-row> <!-- segment where buttons log in/ sign up appears  -->
+      <ion-col size-md="6" offset-md="3">
+        <ion-segment value="login" (ionChange)="onChange($event)">
+          <ion-segment-button value="signin">
+            <ion-label><h3>
+              Sign in
+            </h3></ion-label></ion-segment-button>
+          <ion-segment-button class="login" value="login">
+            <ion-label><h3>
+              Log in
+            </h3></ion-label></ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+   
+      <ion-grid *ngIf=" isLonginOpen === true">  <!-- login form starts here -->
+        <ion-row >
+          <ion-col size-md="6" offset-md="3">
+            <form (ngSubmit)="onLogin()" #form="ngForm">
+            <ion-list>
+              <ion-item>
+                <ion-label position="floating">User Name</ion-label>
+                <ion-input 
+                type="text"
+                id="username"
+                name="username"
+                ngModel                
+                #useCtrl= "ngModel">
+              </ion-input> 
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Secret Word</ion-label>
+                <ion-input 
+                type="password" 
+                id="password"
+                name="password"
+                ngModel
+                required 
+                minlength="8"
+                #passCtrl="ngModel">
+              </ion-input>
+              </ion-item>
+                           <!-- if wrong password occurs -->
+              <ion-item  
+              *ngIf="!passCtrl.valid && passCtrl.touched" 
+              lines="none">
+                <p>
+                  please enter the right secret word
+                </p>
+              </ion-item>
+            </ion-list>
+            <ion-button
+              type="submit"
+              color="tertiary" 
+              expand="block"
+              [disabled]= "!form.valid">
+              Login
+            </ion-button>
+
+           
+          </form>
+              </ion-col>
+            </ion-row> 
+          </ion-grid>
+
+     
+      
+    <ion-grid *ngIf=" isLonginOpen === false">    <!-- sing up form starts here -->
+
+      <ion-row *ngIf="didFail"> <!-- if error occurs -->
+        <ion-col size-md="6" offset-md="3">
+          <ion-text color="danger"> Something went wrong! you need UpperCase and numbers for the password</ion-text>
+        </ion-col>
+      </ion-row>   
+    <ion-row>
+      <ion-col size-md="6" offset-md="3"> 
+      <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">User Name</ion-label>
+            <ion-input 
+            type="text" 
+            ngModel name="user"
+            required
+            #useCtrl= "ngModel">
+          </ion-input>
+          </ion-item>
+                      <!-- Error Message -->
+          <ion-item 
+          *ngIf="!useCtrl.valid && useCtrl.touched" 
+          lines="none">
+            <p>
+              Please enter a user name
+            </p>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input 
+            type="email" 
+            ngModel name="email"
+            required
+            #emailCtrl="ngModel">
+          </ion-input>
+          </ion-item>
+                         <!-- Error Message -->
+          <ion-item 
+          *ngIf="!emailCtrl.valid && emailCtrl.touched" 
+          lines="none">
+            <p>
+              Should be a valid email
+            </p>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Secret Word</ion-label>
+            <ion-input 
+            type="password" 
+            ngModel name="password"
+            required 
+            minlength="8"
+            #passCtrl="ngModel">
+          </ion-input>
+          </ion-item>
+                          <!-- Error Message -->
+          <ion-item 
+          *ngIf="!passCtrl.valid && passCtrl.touched" 
+          lines="none">
+            <p>
+              please enter 8 or more digits
+            </p>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Confirm Secret Word</ion-label>
+            <ion-input 
+            type="password" 
+            ngModel name="confirmPassword"
+            #confirCtrl = "ngModel"
+            required>
+          </ion-input>
+          </ion-item>
+                          <!-- Error Message -->
+          <ion-item 
+          *ngIf="form.value.password !== form.value.confirmPassword"
+          lines="none">
+            <p>
+              Password do not match
+            </p>
+          </ion-item>
+        </ion-list>
+
+        <ion-button
+        type="submit" 
+        color="secondary" 
+        expand="block"
+        (click)="openPopUp()"
+        [disabled]= "(form.value.password !== form.value.confirmPassword)
+                      || form.invalid">
+          Singup
+        </ion-button>
+      </form>
+      </ion-col>
+    </ion-row>
+    </ion-grid>
+ 

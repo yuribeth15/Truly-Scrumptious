@@ -1,0 +1,15 @@
+h1{
+    font-size: 20px;
+    // border: 1px solid var(--ion-color-primary);
+    padding: 2px;
+    // border-radius: 5px;
+    color: var(--ion-color-primary);
+}
+
+h3{
+    color: var(--ion-color-success);
+}
+.fav-list {
+    display: flex;
+    align-items: center;
+}

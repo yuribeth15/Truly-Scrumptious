@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size-md="6" offset-md="3"> <!-- column for Profile picture-->
+      <ion-avatar class="ion-margin-start">
+        <img src="https://img-truly-scrumptious.s3.amazonaws.com/18.png">
+      </ion-avatar>
+    </ion-col>
+    <ion-col class="margin" size-md="6" offset-md="3"> <!-- column for  profile details-->
+      <h2  class="ion-margin-end">Profile Name </h2>
+      <h3>Chef tile</h3>
+      <ion-text> Recipes 0</ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row> <!-- segments buttons -->
+    <ion-col>
+      <ion-segment value="your-recipes" (ionChange)="onFilter($event)">
+        <ion-segment-button value="your-recipes">
+          <ion-label><h3>
+            Your  Recipes
+          </h3></ion-label></ion-segment-button>
+        <ion-segment-button value="settings">
+          <ion-label><h3>
+            Settings
+          </h3></ion-label></ion-segment-button>
+      </ion-segment>
+    </ion-col>
+  </ion-row>
+  <ion-grid *ngIf=" isSettingsOpen === false"> <!--grid that shows recipes information -->
+    <ion-row>
+      <ion-col size-md="6" offset-md="3"  *ngIf="!recipesSaved || recipesSaved.length <= 0">
+        <div class="ion-text-center">
+          <img src="https://img-truly-scrumptious.s3.amazonaws.com/no-baked.png"> 
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf=" isSettingsOpen === true"> <!--grid that shows settings information -->
+    <ion-row> <!-- row  1 of 3-->
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>
+              <h3>About us</h3>
+            </ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row> <!-- row  2 of 3-->
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>
+              <h3>Legal Information</h3>
+            </ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row> <!-- row  3 of 3-->
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>
+              <h3>safety Information</h3>
+            </ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

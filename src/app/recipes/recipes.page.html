@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Truly Scrumptious</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-grid class="ion-no-padding"> 
+    <ion-row> <!-- row 1 of 7 --> 
+      <ion-col>
+        <img src="https://img-truly-scrumptious.s3.amazonaws.com/landing-img.png">
+      </ion-col>
+    </ion-row> 
+    <ion-row> <!-- row 2 of 7--> 
+      <ion-col>
+        <ion-text color="success">
+          <h1 class="ion-text-center"> what would you like to bake!</h1>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center" class="ion-justify-content-center">  <!--row 3 of 7-->     
+      <ion-col  size="12" size-sm="10">
+        <ion-searchbar animated placeholder="Search Recipes here..."></ion-searchbar>
+      </ion-col>
+    </ion-row> 
+    <ion-row  class="ion-align-items-center" class="ion-justify-content-center">  <!--row 4 of 7-->   
+      <ion-col size="12" size-sm="10" >
+        <ion-segment scrollable value="call">
+          <ion-segment-button  *ngFor=" let category of categories"
+          [routerLink]="['/','home','tabs','home', 'categories', category.id]" >
+            <ion-avatar>
+              <ion-img [src]= "category.imageUrl"></ion-img>
+            </ion-avatar>
+            <ion-label><h3>{{category.cateTitle}}</h3></ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row> 
+    <div class="ion-padding"> <!-- first recipe row-->
+      <ion-text color="success">
+        <h1> What will you bake today?</h1>
+      </ion-text>
+    <ion-row >    <!--row 5 of 7-->
+      <ion-col >
+        <ion-segment color="tertiary" scrollable value="yours">
+          <ion-segment-button value="yours"  layout="icon-bottom" *ngFor= " let recipe of loadedRecipes" 
+          [routerLink]="['/','home','tabs','home', recipe.id ]">
+            <ion-label><h3>{{recipe.title}}</h3></ion-label>
+            <ion-img [src]= "recipe.imageUrl"></ion-img>
+
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+  </div> 
+    <div class="ion-padding"> <!-- second recipe row-->
+      <ion-text color="success">
+        <h1> Cook with your Friends</h1>
+      </ion-text>
+    <ion-row>  <!--row 6 of 7--> 
+      <ion-col size="11" class="ion-text-center">
+        <ion-segment color="primary" scrollable value="friends">
+          <ion-segment-button value="friends" layout="icon-bottom" *ngFor= "let recipe of loadedRecipes" 
+          [routerLink]="['/','home','tabs','home',recipe.id]">
+            <ion-label><h3>{{recipe.title}}</h3></ion-label>
+            <ion-img [src]= "recipe.imageUrl"></ion-img>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+  </div> 
+    <div class="ion-padding">  <!-- third recipe row-->
+      <ion-text color="success">
+        <h1> Dessert ideas for your whole family</h1>
+      </ion-text> 
+    <ion-row>  <!--row 7 of  7--> 
+      <ion-col size="11">
+        <ion-segment color="secondary" scrollable value="family">
+          <ion-segment-button value="family" layout="icon-bottom" *ngFor= "let recipe of loadedRecipes" 
+          [routerLink]="['/','home','tabs','home',recipe.id ]">
+            <ion-label><h3>{{recipe.title}}</h3></ion-label>
+            <ion-img [src]= "recipe.imageUrl"></ion-img>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+  </div>
+  </ion-grid>
+
+</ion-content>

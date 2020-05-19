@@ -1,0 +1,36 @@
+<!-- pop up confirmation for the new user to confirm its account and be bale to log in -->
+    <ion-row>
+    <ion-col>
+    <h2>User Confirmation</h2>
+    <p>A code has been sent to the email you provide</p>
+    <form #confirmForm="ngForm" (ngSubmit)="onConfirm(confirmForm.value)">
+    <ion-list>
+    <ion-item>
+      <ion-label position="floating">User name</ion-label>
+      <ion-input 
+      type="text" 
+      ngModel name="username"
+      required
+      #useCtrl= "ngModel">
+      </ion-input> 
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Validation Code</ion-label>
+      <ion-input 
+      type="text" 
+      ngModel name="validation"
+      required 
+      minlength="8"
+      #passCtrl="ngModel">
+    </ion-input>
+    </ion-item>
+    </ion-list>
+    <ion-button
+      type="submit" 
+      color="secondary" 
+      expand="block">
+      Confirm User
+    </ion-button>
+    </form> 
+    </ion-col>
+    </ion-row>

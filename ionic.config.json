@@ -1,5 +1,7 @@
 {
   "name": "Truly-Scrumptious",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

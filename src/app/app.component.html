@@ -1,3 +1,35 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu slot="start" menuId="main" contentId="main">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>
+          Truly Scrumptious
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list> <!-- Side Bar  Menu-->
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/home/tabs/favorites">
+            <ion-icon name="heart-circle-outline" slot="start"></ion-icon>
+            <ion-label>Your Favorites</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/home/tabs/profile">
+            <ion-icon name="ice-cream-outline" slot="start"></ion-icon>
+            <ion-label>Your Recipes</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item lines="none" (click)="onLogout()" button>
+            <ion-icon name="exit" slot="start"></ion-icon>
+            <ion-label>Log out</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>    
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

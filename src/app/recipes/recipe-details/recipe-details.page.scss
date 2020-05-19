@@ -1,0 +1,32 @@
+ion-label{
+    display: inline-block;
+    margin: 1em 1.2em 0 1.2em;
+}
+
+h2{
+    font-size: x-large;
+    margin: 1em 0em 1em 0;
+}
+
+p{
+    margin: 1em 0em 1em 0;
+}
+
+ion-card{
+    box-shadow: 0 10px 30px 0 rgba($color: #292929, $alpha: 0.5);
+}
+
+.image{
+    display: inline-block;
+    float: left;
+}
+
+.text{
+    margin-top: 5em ;
+    text-align: center;
+}
+.saved{
+    display: inline-block;
+    float: right;
+    margin-right: 4em;
+}
