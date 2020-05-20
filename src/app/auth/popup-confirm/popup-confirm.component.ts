@@ -15,7 +15,6 @@ export class PopupConfirmComponent implements OnInit {
               private authService: AuthService
               ) {}
 
-
   ngOnInit() {}
 
   // confirming the value of the form checking to confirm the email of the user

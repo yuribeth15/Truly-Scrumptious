@@ -1,14 +1,12 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar> <!-- changing the registration page title based on which information is appearing on the browser-->
     <ion-title>{{ isLonginOpen ? 'Login' : 'Signin'}}</ion-title>
   </ion-toolbar>
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="f18d9e">
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-grid *ngIf=" isLonginOpen === true">
-    <ion-row>    <!-- welcome image before the sign up/ in form  -->
+    <ion-row>    <!-- welcome image before the sign in form  -->
       <ion-col >
         <img src="https://img-truly-scrumptious.s3.amazonaws.com/2.png">
       </ion-col>
@@ -16,7 +14,7 @@
   </ion-grid>
 
   <ion-grid *ngIf=" isLonginOpen === false">
-    <ion-row>    <!-- sign up image before the sign up/ in form  -->
+    <ion-row>    <!-- sign up image before the log in form  -->
       <ion-col >
         <img src="https://img-truly-scrumptious.s3.amazonaws.com/1.png">
       </ion-col>

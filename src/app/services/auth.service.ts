@@ -39,6 +39,7 @@ export class AuthService {
   // dont give any value back
   authStatusChanged = new Subject<boolean>();
   registeredUser: CognitoUser;
+  userName: CognitoUserAttribute;
 
   constructor( // components injected into this page
               private router: Router,
@@ -52,7 +53,7 @@ export class AuthService {
 
   // extracting the user name from cognito
   getUserName() {
-    this.registeredUser.getUsername();
+    this.userName.getName();
    }
 
    // sign up proccess passing data to cognito
@@ -101,7 +102,7 @@ export class AuthService {
 
       this.authDidFail.next(false);
       this.authIsLoading.next(false);
-      this.router.navigate(['/auth']);
+      this.router.navigate(['/']);
     });
   }
 
@@ -134,7 +135,7 @@ login(username: string, password: string) {
       console.log(err);
     }
   });
-  this.authStatusChanged.next(true); // create user with cognito data
+  this.authStatusChanged.next(true); // if the session status change it will navigate the user to the main page
   return;
 }
 

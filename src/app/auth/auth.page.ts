@@ -28,7 +28,7 @@ export class AuthPage implements OnInit {
               private popoverController: PopoverController,
               ) {}
 
-  // ngOnInit will be always executed once the page is loaded
+  // ngOnInit will be always executed once the page is loaded showing the latest information on the array object
   ngOnInit() {
     this.authService.authIsLoading.subscribe(
       (isLoading: boolean) => this.isLoading = this.isLoading

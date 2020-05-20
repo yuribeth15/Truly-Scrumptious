@@ -19,7 +19,7 @@
     "@angular/http": "^7.2.16",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
-    "@angular/pwa": "^0.901.5",
+    "@angular/pwa": "^0.901.6",
     "@angular/router": "~8.2.14",
     "@angular/service-worker": "~8.2.14",
     "@capacitor/core": "2.1.0",

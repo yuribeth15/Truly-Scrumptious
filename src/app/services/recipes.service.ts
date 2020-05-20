@@ -3,10 +3,9 @@ import { Recipe } from '../models/recipe.model';
 import { Injectable } from '@angular/core';
 import { take, tap, map, delay } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
-import { BehaviorSubject, Subject, concat } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 interface RecipeData {
-  // RecipeId: string;
   category: string;
   description: string;
   title: string;
@@ -28,7 +27,7 @@ interface RecipeData {
 export class RecipesService {
   // doesnt necessarily hold any value
   dataLoaded = new Subject<Recipe[]>();
-  
+
   dataLoadFailed = new Subject<boolean>();
 
   // acts as special subject so that when I subscribe to this array it will always give me the latest value
@@ -83,7 +82,7 @@ export class RecipesService {
           }
           return allrecipes;
         }),
-        // a new event with the places I generated in the map
+        // a new event with the recipes I generated in the map
         // operator making sure that all the recipes that subscribed get the latets object
         tap(fetchedRecipes => {
           this.recipes.next(fetchedRecipes);

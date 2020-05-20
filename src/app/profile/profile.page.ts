@@ -25,4 +25,9 @@ export class ProfilePage implements OnInit {
     console.log(event.detail);
   }
 
+  showUserName() {
+    const name = this.authService.getUserName();
+    console.log(name);
+  }
+
 }

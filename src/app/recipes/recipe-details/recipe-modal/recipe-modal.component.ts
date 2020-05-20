@@ -6,11 +6,11 @@ import { NgForm } from '@angular/forms';
 import { CognitoUser } from 'amazon-cognito-identity-js';
 
 
-// an utility function that convert a base64 string  to a file
-function dataUrltoBlob(base64Data, contentType) {
+// an utility function that convert a dataurl string  to a file
+function dataUrltoBlob(dataUrl, contentType) {
   contentType = contentType || '';
   const sliceSize = 1024;
-  const byteCharacters = window.atob(base64Data);
+  const byteCharacters = window.atob(dataUrl);
   const bytesLength = byteCharacters.length;
   const slicesCount = Math.ceil(bytesLength / sliceSize);
   const byteArrays = new Array(slicesCount);
@@ -35,7 +35,9 @@ function dataUrltoBlob(base64Data, contentType) {
   styleUrls: ['./recipe-modal.component.scss'],
 })
 export class RecipeModalComponent implements OnInit {
+  // decorator that bound into a DOM property in the HTML template
  @Input() selectedRecipe: Recipe;
+ // check for the validation of the parent template of the ng form
  @ViewChild('reviewForm', { static: false }) form: NgForm;
 
  // variables

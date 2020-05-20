@@ -24,7 +24,7 @@ export class ReviewsService {
   userData: Reviews;
   userAttribute: CognitoUser;
 
-  // dummy userreview as default
+  // dummy user review as default
 private review = new BehaviorSubject< Reviews[]>(
   [
     new Reviews(
@@ -142,7 +142,7 @@ return this.userAttribute.getUsername();
   }
 
 // deleting the object from the database with the help of the operator pipe, taje, switmap,tap
-  deleteReview(reviewId: string) {
+  deleteReview(userId: string) {
     this.dataLoadFailed.next(false);
     return this.authService.getAuthenticatedUser().getSession((err, session) => {
       this.http.delete('https://k036q5c5a5.execute-api.us-east-1.amazonaws.com/dev2/recipes/reviews/', {
@@ -155,10 +155,9 @@ return this.userAttribute.getUsername();
           return this.allreviews;
         }),
         take(1),
-        // here I used the local variable review to add a newReview to the list of reviews
-        // and with the help of next it gives me a new updated array list
+        // here I emit a new event filtering the user id for a review to be deleted
         tap(delReview => {
-          this.review.next(delReview.filter(f => f.userId !== reviewId));
+          this.review.next(delReview.filter(f => f.userId !== userId));
         })
       )
       .subscribe(

@@ -36,7 +36,9 @@
             (imgPicker)="onImagePicked($event)">
            </app-img-picker>
           </ion-col>
-           <ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
           <ion-item lines="none">
             <ion-label position="stacked">Review</ion-label>
             <ion-textarea 
@@ -48,17 +50,12 @@
             #reviewCtrl = 'ngModel'></ion-textarea>
           </ion-item>
           <ion-item 
-                *ngIf="!reviewCtrl.valid && reviewCtrl.touched"
-                lines="none">
-                  <p>
-                    You must write something.
-                  </p>
-                </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-        
+            *ngIf="!reviewCtrl.valid && reviewCtrl.touched"
+            lines="none">
+            <p>
+              You must write something.
+            </p>
+          </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
