@@ -16,6 +16,22 @@ img{
     margin-right: auto;
 }
 
+.collapse{
+    background-color: #8593ae;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.privacy-policy{
+    text-align: center;
+    font-size: 15px;
+}
+
+
 ion-card{
     box-shadow: 0 10px 30px 0 rgba($color: #292929, $alpha: 0.5);
 }

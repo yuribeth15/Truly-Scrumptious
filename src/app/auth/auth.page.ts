@@ -59,7 +59,7 @@ export class AuthPage implements OnInit {
 
   // openning the pop up confirmation step
   openPopUp() {
-    if (this.didFail) {
+    if (!this.confirmUser) {
       this.popoverController.create({
         component: PopupConfirmComponent
       }).then ( popEl => {
